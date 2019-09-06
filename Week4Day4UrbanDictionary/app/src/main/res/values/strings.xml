@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Week4Day4UrbanDictionary</string>
+    <string name="type_any_word">Type any word...</string>
+    <string name="main_header">Urban Dictionary</string>
+</resources>
