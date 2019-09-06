@@ -1,12 +1,15 @@
 package com.example.week4day4urbandictionary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ToggleButton;
 
 import com.example.week4day4urbandictionary.model.datasource.remote.retrofit.RetrofitHelper;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private UrbanDictAdapter adapter;
     private EditText etSearch;
     private ToggleButton togSort;
+    private ProgressBar pbQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         rvSearchResults = findViewById(R.id.rvSearchResults);
         etSearch = findViewById(R.id.etSearch);
         togSort = findViewById(R.id.togSort);
+        pbQuery = findViewById(R.id.pbQuery);
         togSort.setChecked(true);
 
         togSort.setOnClickListener(new View.OnClickListener(){
@@ -80,11 +85,13 @@ public class MainActivity extends AppCompatActivity {
             List<ListItem> definitionList = event.getUrbanDictionaryResponse().getList();
             populateRecyclerView(definitionList);
             adapter.sort(togSort.isChecked());
+            pbQuery.setVisibility(View.GONE);
         }
     }
 
     public void onGoClicked(View view) {
         //send off API call
+        pbQuery.setVisibility(View.VISIBLE);
         RetrofitHelper helper = new RetrofitHelper();
         helper.getService().getDefinitions(etSearch.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())

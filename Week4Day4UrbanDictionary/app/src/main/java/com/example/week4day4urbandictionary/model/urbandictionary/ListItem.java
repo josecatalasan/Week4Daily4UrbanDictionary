@@ -1,10 +1,13 @@
 package com.example.week4day4urbandictionary.model.urbandictionary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 
-public class ListItem{
+public class ListItem implements Parcelable {
 
 	@SerializedName("defid")
 	private int defid;
@@ -38,6 +41,32 @@ public class ListItem{
 
 	@SerializedName("example")
 	private String example;
+
+	protected ListItem(Parcel in) {
+		defid = in.readInt();
+		soundUrls = in.createStringArrayList();
+		thumbsDown = in.readInt();
+		author = in.readString();
+		writtenOn = in.readString();
+		definition = in.readString();
+		permalink = in.readString();
+		thumbsUp = in.readInt();
+		word = in.readString();
+		currentVote = in.readString();
+		example = in.readString();
+	}
+
+	public static final Creator<ListItem> CREATOR = new Creator<ListItem>() {
+		@Override
+		public ListItem createFromParcel(Parcel in) {
+			return new ListItem(in);
+		}
+
+		@Override
+		public ListItem[] newArray(int size) {
+			return new ListItem[size];
+		}
+	};
 
 	public void setDefid(int defid){
 		this.defid = defid;
@@ -144,4 +173,24 @@ public class ListItem{
 			",example = '" + example + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeInt(defid);
+		parcel.writeStringList(soundUrls);
+		parcel.writeInt(thumbsDown);
+		parcel.writeString(author);
+		parcel.writeString(writtenOn);
+		parcel.writeString(definition);
+		parcel.writeString(permalink);
+		parcel.writeInt(thumbsUp);
+		parcel.writeString(word);
+		parcel.writeString(currentVote);
+		parcel.writeString(example);
+	}
 }

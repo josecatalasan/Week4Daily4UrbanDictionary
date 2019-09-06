@@ -55,4 +55,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
+    <ProgressBar
+        android:id="@+id/pbQuery"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminate="true"
+        android:max="50"
+        android:progress="1"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/rvSearchResults"
+        app:layout_constraintLeft_toLeftOf="@+id/rvSearchResults"
+        app:layout_constraintRight_toRightOf="@+id/rvSearchResults"
+        app:layout_constraintBottom_toBottomOf="@id/rvSearchResults" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
