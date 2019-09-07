@@ -34,7 +34,7 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
                     return one.getThumbsUp() > two.getThumbsUp() ? -1 : one.getThumbsUp() < two.getThumbsUp() ? 1 : 0;
                 }
             });
-        } else {
+        } else { //sort by downvotes
             Collections.sort(defList, new Comparator<ListItem>() {
                 @Override
                 public int compare(ListItem one, ListItem two) {
@@ -55,8 +55,8 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListItem currentItem = defList.get(position);
         holder.tvSearchedWord.setText(currentItem.getWord());
-        holder.tvDefinition.setText(currentItem.getDefinition());
-        holder.tvExamples.setText(currentItem.getExample());
+        holder.tvDefinition.setText(currentItem.getDefinition().replaceAll("[\\[\\]]", ""));
+        holder.tvExamples.setText(currentItem.getExample().replaceAll("[\\[\\]]", ""));
         holder.tvUpCount.setText(String.valueOf(currentItem.getThumbsUp()));
         holder.tvDownCount.setText(String.valueOf(currentItem.getThumbsDown()));
 

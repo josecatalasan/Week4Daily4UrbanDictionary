@@ -1,12 +1,10 @@
 package com.example.week4day4urbandictionary;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -86,12 +84,14 @@ public class MainActivity extends AppCompatActivity {
             populateRecyclerView(definitionList);
             adapter.sort(togSort.isChecked());
             pbQuery.setVisibility(View.GONE);
+            rvSearchResults.setVisibility(View.VISIBLE);
         }
     }
 
     public void onGoClicked(View view) {
         //send off API call
         pbQuery.setVisibility(View.VISIBLE);
+        rvSearchResults.setVisibility(View.INVISIBLE);
         RetrofitHelper helper = new RetrofitHelper();
         helper.getService().getDefinitions(etSearch.getText().toString())
                 .observeOn(AndroidSchedulers.mainThread())
