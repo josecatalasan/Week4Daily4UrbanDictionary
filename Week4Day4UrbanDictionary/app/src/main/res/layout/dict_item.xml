@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#fffddb"
-    android:layout_margin="6dp"
+    android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,8 +12,9 @@
         android:id="@+id/tvSearchedWord"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
         android:layout_marginTop="10dp"
         android:layout_marginStart="18dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
         app:layout_constraintTop_toBottomOf="@+id/tvSearchedWord"/>
@@ -72,9 +75,10 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="italic"
+        android:fontFamily="sans-serif-medium"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintTop_toBottomOf="@+id/tvDefinition"/>
 
@@ -84,9 +88,10 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
         android:layout_margin="12dp"
         android:paddingBottom="12dp"
         app:layout_constraintTop_toBottomOf="@+id/tvExamples"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
