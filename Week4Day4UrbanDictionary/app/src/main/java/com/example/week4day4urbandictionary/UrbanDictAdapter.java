@@ -10,11 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.week4day4urbandictionary.model.urbandictionary.ListItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.ViewHolder> {
+    private static final String[] MONTHS = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     List<ListItem> defList;
 
     public UrbanDictAdapter(List<ListItem> defList) {
@@ -45,6 +49,18 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
         notifyDataSetChanged();
     }
 
+    private String parseDate(String passedDate){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = sdf.parse(passedDate);
+            sdf.applyPattern("MMMM, dd yyyy");
+            return sdf.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return passedDate;
+        }
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,7 +75,7 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
         holder.tvExamples.setText(currentItem.getExample().replaceAll("[\\[\\]]", ""));
         holder.tvUpCount.setText(String.valueOf(currentItem.getThumbsUp()));
         holder.tvDownCount.setText(String.valueOf(currentItem.getThumbsDown()));
-        holder.tvAuthorDate.setText(String.format("By %s on %s", currentItem.getAuthor(), currentItem.getWrittenOn()));
+        holder.tvAuthorDate.setText(String.format("By %s\nOn %s", currentItem.getAuthor(), parseDate(currentItem.getWrittenOn().substring(0,10))));
 
     }
 

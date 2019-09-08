@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#ffffff"
-    android:layout_margin="10dp"
+    android:background="#fffddb"
+    android:layout_margin="6dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -64,7 +64,7 @@
         android:textSize="22sp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/ivThumbsDown"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchedWord"/>
 
     <TextView
         android:id="@+id/tvExamples"
