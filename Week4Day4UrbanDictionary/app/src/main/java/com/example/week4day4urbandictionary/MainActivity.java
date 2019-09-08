@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ivOpeningImage = findViewById(R.id.ivOpeningImage);
 
         random = new Random();
-        if(random.nextInt(20)+1<=15){
+        if(random.nextInt(20)+1>=15){
             ivOpeningImage.setImageResource(R.drawable.opening_image);
         }
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onGoClicked(View view) {
         ivOpeningImage.setVisibility(View.GONE);
-        if(random.nextInt(20)+1<=17){
+        if(random.nextInt(20)+1>=16){
             ivOpeningImage.setImageResource(R.drawable.opening_image);
             ivOpeningImage.setVisibility(View.VISIBLE);
             ivOpeningImage.setY(35);
