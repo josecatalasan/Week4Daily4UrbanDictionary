@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ToggleButton;
 
@@ -20,6 +21,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
+import java.util.Random;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etSearch;
     private ToggleButton togSort;
     private ProgressBar pbQuery;
+    private ImageView ivOpeningImage;
+    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         etSearch = findViewById(R.id.etSearch);
         togSort = findViewById(R.id.togSort);
         pbQuery = findViewById(R.id.pbQuery);
+        ivOpeningImage = findViewById(R.id.ivOpeningImage);
+
+        random = new Random();
+        if(random.nextInt(20)+1<=15){
+            ivOpeningImage.setImageResource(R.drawable.opening_image);
+        }
+
         togSort.setChecked(true);
 
         togSort.setOnClickListener(new View.OnClickListener(){
@@ -85,11 +96,18 @@ public class MainActivity extends AppCompatActivity {
             adapter.sort(togSort.isChecked());
             pbQuery.setVisibility(View.GONE);
             rvSearchResults.setVisibility(View.VISIBLE);
+            ivOpeningImage.setVisibility(View.GONE);
         }
     }
 
     public void onGoClicked(View view) {
-        //send off API call
+        ivOpeningImage.setVisibility(View.GONE);
+        if(random.nextInt(20)+1<=17){
+            ivOpeningImage.setImageResource(R.drawable.opening_image);
+            ivOpeningImage.setVisibility(View.VISIBLE);
+            ivOpeningImage.setY(35);
+        }
+
         pbQuery.setVisibility(View.VISIBLE);
         rvSearchResults.setVisibility(View.INVISIBLE);
         RetrofitHelper helper = new RetrofitHelper();

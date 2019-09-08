@@ -79,6 +79,16 @@
         app:layout_constraintTop_toTopOf="@id/rvSearchResults"
         app:layout_constraintLeft_toLeftOf="@+id/rvSearchResults"
         app:layout_constraintRight_toRightOf="@+id/rvSearchResults"
-        app:layout_constraintBottom_toBottomOf="@id/rvSearchResults" />
+        app:layout_constraintBottom_toBottomOf="@id/rvSearchResults"/>
+
+    <ImageView
+        android:id="@+id/ivOpeningImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ud_logo2"
+        app:layout_constraintTop_toTopOf="@id/rvSearchResults"
+        app:layout_constraintLeft_toLeftOf="@+id/rvSearchResults"
+        app:layout_constraintRight_toRightOf="@+id/rvSearchResults"
+        app:layout_constraintBottom_toBottomOf="@id/rvSearchResults"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
