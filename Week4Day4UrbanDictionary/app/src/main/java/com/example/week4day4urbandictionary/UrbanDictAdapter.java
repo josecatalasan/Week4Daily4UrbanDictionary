@@ -59,6 +59,7 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
         holder.tvExamples.setText(currentItem.getExample().replaceAll("[\\[\\]]", ""));
         holder.tvUpCount.setText(String.valueOf(currentItem.getThumbsUp()));
         holder.tvDownCount.setText(String.valueOf(currentItem.getThumbsDown()));
+        holder.tvAuthorDate.setText(String.format("By %s on %s", currentItem.getAuthor(), currentItem.getWrittenOn()));
 
     }
 
@@ -68,7 +69,7 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tvSearchedWord, tvDefinition, tvExamples, tvUpCount, tvDownCount;
+        TextView tvSearchedWord, tvDefinition, tvExamples, tvUpCount, tvDownCount, tvAuthorDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +78,7 @@ public class UrbanDictAdapter extends RecyclerView.Adapter<UrbanDictAdapter.View
             tvExamples = itemView.findViewById(R.id.tvExamples);
             tvUpCount = itemView.findViewById(R.id.tvUpCount);
             tvDownCount = itemView.findViewById(R.id.tvDownCount);
+            tvAuthorDate = itemView.findViewById(R.id.tvAuthorDate);
         }
     }
 }

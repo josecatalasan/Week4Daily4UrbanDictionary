@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#160d37"
     tools:context=".MainActivity">
 
     <TextView
@@ -23,24 +24,35 @@
         android:layout_height="wrap_content"
         android:hint="@string/type_any_word"
         android:textSize="20sp"
+        android:paddingStart="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="#ffffff"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/tvMainHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnGo"/>
 
     <Button
         android:id="@+id/btnGo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="0dp"
         android:text="GO!"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:background="#2b20e2"
         android:onClick="onGoClicked"
         app:layout_constraintTop_toBottomOf="@id/tvMainHeader"
+        app:layout_constraintBottom_toBottomOf="@id/etSearch"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchResults"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingBottom="16dp"
+        android:background="#cbcbcc"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/etSearch"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
